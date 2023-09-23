@@ -13,6 +13,49 @@ const Footer = () => {
                     <img src={LOGO} alt="logo"></img>
                 </Link>
             </div>
+            <div className={styles.rights}>
+                Developed by{' '}
+                <a
+                    href="https://github.com/Nexoroshii"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Egor Moyseychik
+                </a>
+            </div>
+            <div className={styles.socials}>
+                <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <svg className="icon">
+                        <use
+                            xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#instagram`}
+                        />
+                    </svg>
+                </a>
+
+                <a href="https://facebook.com" target="_blank" rel="noreferrer">
+                    <svg className="icon">
+                        <use
+                            xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#facebook`}
+                        />
+                    </svg>
+                </a>
+
+                <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <svg className="icon">
+                        <use
+                            xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#youtube`}
+                        />
+                    </svg>
+                </a>
+            </div>
         </section>
     );
 };
