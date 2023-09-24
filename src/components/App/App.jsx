@@ -20,7 +20,7 @@ const App = () => {
             <Header />
 
             <div className="container">
-                <Sidebar />
+                <Sidebar amount={5} />
                 <AppRoutes />
             </div>
             <Footer />

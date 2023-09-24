@@ -28,7 +28,7 @@ const Home = () => {
             />
             <Banner />
 
-            <Products products={filtered} amount={5} title="Trending" />
+            <Products products={filtered} amount={5} title="Less then 100$" />
         </>
     );
 };

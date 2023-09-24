@@ -4,9 +4,10 @@ import styles from '../../styles/Sidebar.module.css';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const Sidebar = () => {
+const Sidebar = (amount) => {
     const { list } = useSelector(({ categories }) => categories);
-    console.log('list', list);
+    //const filteredList = list.filter((_, i) => i < amount);
+    //console.log({ list });
     return (
         <section>
             <div className={styles.sidebar}>
