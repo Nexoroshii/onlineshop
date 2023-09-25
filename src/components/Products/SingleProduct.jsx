@@ -3,8 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useGetProductQuery } from '../../features/api/apiSlice';
 import { ROUTES } from '../../utils/routes';
 import Product from './Product';
+import Products from './Products';
+import { useDispatch } from 'react-redux';
+import { getRelatedProducts } from '../../features/products/productsSlice';
 
 const SingleProduct = () => {
+    const dispatch = useDispatch();
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -18,11 +22,19 @@ const SingleProduct = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoading, isFetching, isSuccess]);
+
+    useEffect(() => {
+        if (data) {
+            dispatch(getRelatedProducts(data.category.id));
+        }
+    }, [data, dispatch]);
+
     return !data ? (
         <section className="preloader">Loading...</section>
     ) : (
         <div>
             <Product {...data} />
+            {/* <Products products={list} amount={5} title="Trending" /> */}
         </div>
     );
 };
