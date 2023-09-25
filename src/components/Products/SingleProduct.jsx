@@ -4,13 +4,14 @@ import { useGetProductQuery } from '../../features/api/apiSlice';
 import { ROUTES } from '../../utils/routes';
 import Product from './Product';
 import Products from './Products';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getRelatedProducts } from '../../features/products/productsSlice';
 
 const SingleProduct = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const navigate = useNavigate();
+    const { list, related } = useSelector(({ products }) => products);
 
     const { data, isLoading, isFetching, isSuccess } = useGetProductQuery({
         id,
@@ -24,17 +25,17 @@ const SingleProduct = () => {
     }, [isLoading, isFetching, isSuccess]);
 
     useEffect(() => {
-        if (data) {
-            dispatch(getRelatedProducts(data.category.id));
-        }
-    }, [data, dispatch]);
+        if (!data || !list.length) return;
+
+        dispatch(getRelatedProducts(data.category.id));
+    }, [data, dispatch, list.length]);
 
     return !data ? (
         <section className="preloader">Loading...</section>
     ) : (
         <div>
             <Product {...data} />
-            {/* <Products products={list} amount={5} title="Trending" /> */}
+            <Products products={related} amount={5} title="Trending" />
         </div>
     );
 };
