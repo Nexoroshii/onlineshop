@@ -16,6 +16,7 @@ const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
     const handleChange = ({ target: { value, name } }) => {
         setValues({ ...values, [name]: value });
     };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const isEmpty = Object.values(values).some((val) => !val);
