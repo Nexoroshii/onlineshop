@@ -33,10 +33,10 @@ const SingleProduct = () => {
     return !data ? (
         <section className="preloader">Loading...</section>
     ) : (
-        <div>
+        <>
             <Product {...data} />
             <Products products={related} amount={5} title="Trending" />
-        </div>
+        </>
     );
 };
 
